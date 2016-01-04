@@ -37,7 +37,7 @@ public class LoginTest extends BaseTest {
         loginPage.setInputUserName("");
         loginPage.setInputPassword("");
         loginPage.clickSignInForErrors();
-        Assert.assertEquals(loginPage.errorMessageOnBlankUsrAndPass(), "Please provide a valid email id");
+        Assert.assertEquals(loginPage.errorMessageOnBlankUsrAndPass(), "Please provide a valid email ");
         //loginPage.CloseSignInPopUp();
     }
 

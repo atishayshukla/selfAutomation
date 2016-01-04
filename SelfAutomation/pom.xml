@@ -83,7 +83,7 @@
 
             <property>
               <name>listener</name>
-              <value>org.uncommons.reportng.HTMLReporter, org.uncommons.reportng.JUnitXMLReporter</value>
+              <value>org.uncommons.reportng.HTMLReporter, org.uncommons.reportng.JUnitXMLReporter,com.atishay.webui.testng.Listener</value>
             </property>
 
           </properties>

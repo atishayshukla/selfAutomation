@@ -1,10 +1,14 @@
 package com.atishay.webui.webdriver.tests;
 
+import com.atishay.webui.testng.Listener;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
+import org.apache.commons.io.FileUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
@@ -15,11 +19,11 @@ import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.*;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by Ati on 27-12-2015.
@@ -32,7 +36,7 @@ public class BaseTest {
     protected static final String URL = System.getProperty("URL","www.goibibo.com");
     protected static final String EXTENT_REPORT_PATH = System.getProperty("user.dir") + "//" + "ExtentReport";
 
-    protected RemoteWebDriver driver;
+    protected static RemoteWebDriver driver;
     protected ExtentReports extentReports;
     protected ExtentTest test;
 
@@ -105,22 +109,30 @@ public class BaseTest {
     }
     @AfterClass
     public void suiteTearDown(){
-        driver.quit();
+        if (Listener.EXTENT_FLAG == 1){
+            driver.quit();
+        }
     }
 
-    @BeforeTest
-    public void intializeExtentReport(){
 
-        extentReports = new ExtentReports(EXTENT_REPORT_PATH,true);
-    }
-
-    @AfterTest
-    public void EndExtentReport(){
-        System.out.println("In After Test");
-    }
     protected JSONObject getConfigFile(String fileName) throws JSONException {
         InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("testdata/" + fileName);
         return new JSONObject(new JSONTokener(new InputStreamReader(inputStream)));
+    }
+
+    public static String takeScreenshot(String testName) {
+        SimpleDateFormat sDate = new SimpleDateFormat("HH_mm_ss");
+        Date now = new Date();
+        String currentTime = sDate.format(now);
+        File DestFile = new File("build/reports/" + BROWSER + "/" + testName + "_" + BROWSER + "-" + currentTime + ".png");
+        //WebDriver augmentedDriver = new Augmenter().augment(driver);
+        File scrFile = driver.getScreenshotAs(OutputType.FILE);
+        try {
+            FileUtils.copyFile(scrFile, DestFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return DestFile.getAbsolutePath();
     }
 
 }
