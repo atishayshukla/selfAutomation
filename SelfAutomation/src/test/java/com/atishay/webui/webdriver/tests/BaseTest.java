@@ -1,5 +1,10 @@
 package com.atishay.webui.webdriver.tests;
 
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
@@ -8,11 +13,11 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -25,8 +30,11 @@ public class BaseTest {
     protected static final String SELENIUM_HOST = System.getProperty("SELENIUM_HOST", "10.3.1.191");
     protected static final int SELENIUM_PORT = 4444;
     protected static final String URL = System.getProperty("URL","www.goibibo.com");
+    protected static final String EXTENT_REPORT_PATH = System.getProperty("user.dir") + "//" + "ExtentReport";
 
     protected RemoteWebDriver driver;
+    protected ExtentReports extentReports;
+    protected ExtentTest test;
 
     @BeforeClass
     public void suiteSetup() throws Exception {
@@ -92,10 +100,27 @@ public class BaseTest {
     }
     @AfterMethod
     public void testTearDown(){
+
         driver.manage().deleteAllCookies();
     }
     @AfterClass
     public void suiteTearDown(){
         driver.quit();
     }
+
+    @BeforeTest
+    public void intializeExtentReport(){
+
+        extentReports = new ExtentReports(EXTENT_REPORT_PATH,true);
+    }
+
+    @AfterTest
+    public void EndExtentReport(){
+        System.out.println("In After Test");
+    }
+    protected JSONObject getConfigFile(String fileName) throws JSONException {
+        InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("testdata/" + fileName);
+        return new JSONObject(new JSONTokener(new InputStreamReader(inputStream)));
+    }
+
 }

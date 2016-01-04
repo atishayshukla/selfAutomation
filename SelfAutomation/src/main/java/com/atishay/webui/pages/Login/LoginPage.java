@@ -41,6 +41,15 @@ public class LoginPage extends AbstractPageObject {
     @FindBy(xpath = "(.//*[@id='signinBtn'])[1]")
     WebElement signInButton;
 
+    @FindBy(css = ".errorlist > li")
+    WebElement errorOnInvalidLoginForInvalidPassword;
+
+    @FindBy(css = ".alert_msg.failure_msg.fl > span")
+    WebElement errorOnBlankUsrAndPass;
+
+    @FindBy(css = "#interPopupIntro a")
+    WebElement closeSignInPopUp;
+
     public void clickSignInLink(){
         //wait.until(ExpectedConditions.visibilityOf(notificationCenterContainer));
         wait.until(ExpectedConditions.visibilityOf(linkSignIn));
@@ -63,11 +72,31 @@ public class LoginPage extends AbstractPageObject {
     }
 
     public HomePage clickSignInButton(){
-        //wait.until(ExpectedConditions.visibilityOf(signInButton));
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        //executor.executeScript("arguments[0].click();", signInButton);
+        executor.executeScript("document.getElementById('signinBtn').click();");
+        return new HomePage(driver);
+    }
+    public void clickSignInForErrors(){
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click();", signInButton);
-        //signInButton.click();
-        return new HomePage(driver);
+        Util.pause(1);
+        //executor.executeScript("document.getElementById('signinBtn').click();");
+    }
+
+    public String errorMessagePresentOnInvalidPassword(){
+        return errorOnInvalidLoginForInvalidPassword.getText();
+    }
+
+    public String errorMessageOnBlankUsrAndPass(){
+        return errorOnBlankUsrAndPass.getText();
+    }
+
+    public void CloseSignInPopUp(){
+        Util.pause(2);
+        closeSignInPopUp.click();
+        /*JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", closeSignInPopUp);*/
     }
 
 }
