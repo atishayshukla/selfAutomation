@@ -8,17 +8,14 @@ import org.testng.*;
 import org.testng.xml.XmlSuite;
 
 import java.io.File;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Ati on 27-12-2015.
  */
 public class Listener implements IReporter{
     private ExtentReports extentReports;
-    public static int EXTENT_FLAG = 0;
+
     @Override
     public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) {
         extentReports = new ExtentReports(outputDirectory + File.separator + "SelfAutomation.html",true);
@@ -56,9 +53,15 @@ public class Listener implements IReporter{
 
                 if (result.getThrowable() != null) {
                     test.log(status, result.getThrowable());
-                    String image = test.addScreenCapture(BaseTest.takeScreenshot(result.getName()));
-                    test.log(LogStatus.FAIL,"Test Fail",image);
-                    EXTENT_FLAG = 1;
+                    Set set = BaseTest.EXTENT_REPORT_SCREENSHOT_MAP.entrySet();
+                    Iterator iterator = set.iterator();
+                    while (iterator.hasNext()){
+                        Map.Entry scnEntry = (Map.Entry)iterator.next();
+                        if (scnEntry.getKey().equals(result.getName())){
+                            String img = test.addScreenCapture(scnEntry.getValue().toString());
+                            test.log(LogStatus.FAIL,result.getName(),img);
+                        }
+                    }
                 }
 
                 else {

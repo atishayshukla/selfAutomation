@@ -17,13 +17,18 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.IResultMap;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Ati on 27-12-2015.
@@ -34,7 +39,7 @@ public class BaseTest {
     protected static final String SELENIUM_HOST = System.getProperty("SELENIUM_HOST", "10.3.1.191");
     protected static final int SELENIUM_PORT = 4444;
     protected static final String URL = System.getProperty("URL","www.goibibo.com");
-    protected static final String EXTENT_REPORT_PATH = System.getProperty("user.dir") + "//" + "ExtentReport";
+    public static final Map<String,String> EXTENT_REPORT_SCREENSHOT_MAP = new HashMap<>();
 
     protected static RemoteWebDriver driver;
     protected ExtentReports extentReports;
@@ -103,15 +108,16 @@ public class BaseTest {
         driver.get("https://" + URL);
     }
     @AfterMethod
-    public void testTearDown(){
-
+    public void testTearDown(ITestResult result){
+        if (!result.isSuccess()){
+            EXTENT_REPORT_SCREENSHOT_MAP.put(result.getName(),takeScreenshot(result.getName()));
+        }
         driver.manage().deleteAllCookies();
     }
     @AfterClass
     public void suiteTearDown(){
-        if (Listener.EXTENT_FLAG == 1){
-            driver.quit();
-        }
+
+        driver.quit();
     }
 
 
@@ -135,4 +141,15 @@ public class BaseTest {
         return DestFile.getAbsolutePath();
     }
 
+    public static void getTestResults(ITestResult result){
+        Map<String,String> resultMap = new HashMap<>();
+        while (!result.isSuccess()){
+            String testName = result.getName();
+            String imgPath = takeScreenshot(testName);
+            resultMap.put(testName,imgPath);
+        }
+        for (int i=0; i<resultMap.entrySet().size(); i++){
+            System.out.println(resultMap.get(i).toString());
+        }
+    }
 }

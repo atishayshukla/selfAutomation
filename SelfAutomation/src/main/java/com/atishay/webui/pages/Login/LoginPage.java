@@ -80,7 +80,7 @@ public class LoginPage extends AbstractPageObject {
     public void clickSignInForErrors(){
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click();", signInButton);
-        Util.pause(1);
+        Util.pause(2);
         //executor.executeScript("document.getElementById('signinBtn').click();");
     }
 

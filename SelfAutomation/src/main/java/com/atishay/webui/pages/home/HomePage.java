@@ -31,8 +31,10 @@ public class HomePage extends AbstractPageObject {
     WebElement linkLogut;
 
     public boolean isUserLoggedIn(String userName){
+        wait.until(ExpectedConditions.visibilityOf(userWiddget));
         Actions actions = new Actions(driver);
         actions.moveToElement(userWiddget).build().perform();
+        wait.until(ExpectedConditions.visibilityOf(placeHolderWithUserName));
         String loggedInUser = placeHolderWithUserName.getText();
         if (loggedInUser.equals(userName)) return true;
         else return false;
