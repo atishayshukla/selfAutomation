@@ -12,164 +12,25 @@
 <body>
 <h1>Surefire test</h1>
 <p>
-  Test duration: 41.967s
+  Test duration: 0.009s
 </p>
 
 
 
-  <table class="resultsTable">
-    <tr><th colspan="3" class="header failed">Failed Tests</th></tr>
-          <tr>
-        <td colspan="3" class="group">com.atishay.webui.webdriver.tests.LoginTest</td>
-      </tr>
-            
-<tr>
-  <td class="method">
-                  blankLoginAndPassword
-      </td>
-  <td class="duration">
-    7.885s
-  </td>
-  <td class="result">
-        
-    
-        
-
-        <a href="javascript:toggleElement('exception-0', 'block')" title="Click to expand/collapse"><b>java.lang.AssertionError: expected [Please provide a valid email ] but found [Please provide a valid email id]</b></a><br />
-    <div class="stackTrace" id="exception-0">
-              org.testng.Assert.fail(Assert.java:94)<br />
-              org.testng.Assert.failNotEquals(Assert.java:496)<br />
-              org.testng.Assert.assertEquals(Assert.java:125)<br />
-              org.testng.Assert.assertEquals(Assert.java:178)<br />
-              org.testng.Assert.assertEquals(Assert.java:188)<br />
-              com.atishay.webui.webdriver.tests.LoginTest.blankLoginAndPassword(LoginTest.java:40)<br />
-              sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br />
-              sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)<br />
-              sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br />
-              java.lang.reflect.Method.invoke(Method.java:497)<br />
-              org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)<br />
-              org.testng.internal.Invoker.invokeMethod(Invoker.java:639)<br />
-              org.testng.internal.Invoker.invokeTestMethod(Invoker.java:816)<br />
-              org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1124)<br />
-              org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)<br />
-              org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)<br />
-              org.testng.TestRunner.privateRun(TestRunner.java:774)<br />
-              org.testng.TestRunner.run(TestRunner.java:624)<br />
-              org.testng.SuiteRunner.runTest(SuiteRunner.java:359)<br />
-              org.testng.SuiteRunner.runSequentially(SuiteRunner.java:354)<br />
-              org.testng.SuiteRunner.privateRun(SuiteRunner.java:312)<br />
-              org.testng.SuiteRunner.run(SuiteRunner.java:261)<br />
-              org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)<br />
-              org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)<br />
-              org.testng.TestNG.runSuitesSequentially(TestNG.java:1215)<br />
-              org.testng.TestNG.runSuitesLocally(TestNG.java:1140)<br />
-              org.testng.TestNG.run(TestNG.java:1048)<br />
-              org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:115)<br />
-              org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:205)<br />
-              org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:108)<br />
-              org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:111)<br />
-              org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:203)<br />
-              org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:155)<br />
-              org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:103)<br />
-                </div>
-      </td>
-</tr>
-<tr>
-  <td class="method">
-                  correctUserNameAndInvalidPassword
-      </td>
-  <td class="duration">
-    3.018s
-  </td>
-  <td class="result">
-        
-    
-        
-
-        <a href="javascript:toggleElement('exception-1', 'block')" title="Click to expand/collapse"><b>org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;name&quot;,&quot;selector&quot;:&quot;username&quot;}<br/>
-Command duration or timeout: 512 milliseconds<br/>
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html<br/>
-Build info: version: &apos;2.48.2&apos;, revision: &apos;41bccdd10cf2c0560f637404c2d96164b67d9d67&apos;, time: &apos;2015-10-09 13:08:06&apos;<br/>
-System info: host: &apos;atishay&apos;, ip: &apos;192.168.1.36&apos;, os.name: &apos;Windows 8.1&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.3&apos;, java.version: &apos;1.8.0_60&apos;<br/>
-Driver info: org.openqa.selenium.firefox.FirefoxDriver<br/>
-Capabilities [{applicationCacheEnabled=true, rotatable=false, handlesAlerts=true, databaseEnabled=true, version=43.0.2, platform=WINDOWS, nativeEvents=false, acceptSslCerts=true, webStorageEnabled=true, locationContextEnabled=true, browserName=firefox, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]<br/>
-Session ID: af0343c8-3d43-4bac-a6b2-80e57ed94391<br/>
-*** Element info: {Using=name, value=username}</b></a><br />
-    <div class="stackTrace" id="exception-1">
-              sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)<br />
-              sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)<br />
-              sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)<br />
-              java.lang.reflect.Constructor.newInstance(Constructor.java:422)<br />
-              org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)<br />
-              org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)<br />
-              org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:647)<br />
-              org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)<br />
-              org.openqa.selenium.remote.RemoteWebDriver.findElementByName(RemoteWebDriver.java:451)<br />
-              org.openqa.selenium.By$ByName.findElement(By.java:303)<br />
-              org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:345)<br />
-              org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)<br />
-              org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)<br />
-              com.sun.proxy.$Proxy7.click(Unknown Source)<br />
-              com.atishay.webui.pages.Login.LoginPage.setInputUserName(LoginPage.java:61)<br />
-              com.atishay.webui.webdriver.tests.LoginTest.correctUserNameAndInvalidPassword(LoginTest.java:48)<br />
-              sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br />
-              sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)<br />
-              sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br />
-              java.lang.reflect.Method.invoke(Method.java:497)<br />
-              org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)<br />
-              org.testng.internal.Invoker.invokeMethod(Invoker.java:639)<br />
-              org.testng.internal.Invoker.invokeTestMethod(Invoker.java:816)<br />
-              org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1124)<br />
-              org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)<br />
-              org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)<br />
-              org.testng.TestRunner.privateRun(TestRunner.java:774)<br />
-              org.testng.TestRunner.run(TestRunner.java:624)<br />
-              org.testng.SuiteRunner.runTest(SuiteRunner.java:359)<br />
-              org.testng.SuiteRunner.runSequentially(SuiteRunner.java:354)<br />
-              org.testng.SuiteRunner.privateRun(SuiteRunner.java:312)<br />
-              org.testng.SuiteRunner.run(SuiteRunner.java:261)<br />
-              org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)<br />
-              org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)<br />
-              org.testng.TestNG.runSuitesSequentially(TestNG.java:1215)<br />
-              org.testng.TestNG.runSuitesLocally(TestNG.java:1140)<br />
-              org.testng.TestNG.run(TestNG.java:1048)<br />
-              org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:115)<br />
-              org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:205)<br />
-              org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:108)<br />
-              org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:111)<br />
-              org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:203)<br />
-              org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:155)<br />
-              org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:103)<br />
-                    <b>Caused by: </b> <a href="javascript:toggleElement('exception-2', 'block')" title="Click to expand/collapse">org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;name&quot;,&quot;selector&quot;:&quot;username&quot;}<br/>
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html<br/>
-Build info: version: &apos;2.48.2&apos;, revision: &apos;41bccdd10cf2c0560f637404c2d96164b67d9d67&apos;, time: &apos;2015-10-09 13:08:06&apos;<br/>
-System info: host: &apos;atishay&apos;, ip: &apos;192.168.1.36&apos;, os.name: &apos;Windows 8.1&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.3&apos;, java.version: &apos;1.8.0_60&apos;<br/>
-Driver info: driver.version: unknown</a><br />
-        <div class="stackTrace" id="exception-2">
-                      &lt;anonymous class&gt;.FirefoxDriver.prototype.findElementInternal_(file:///C:/Users/Ati/AppData/Local/Temp/anonymous3655197809983747326webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10659)<br />
-                      &lt;anonymous class&gt;.FirefoxDriver.prototype.findElement(file:///C:/Users/Ati/AppData/Local/Temp/anonymous3655197809983747326webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10668)<br />
-                      &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_/h(file:///C:/Users/Ati/AppData/Local/Temp/anonymous3655197809983747326webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12534)<br />
-                      &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_(file:///C:/Users/Ati/AppData/Local/Temp/anonymous3655197809983747326webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12539)<br />
-                      &lt;anonymous class&gt;.DelayedCommand.prototype.execute/&lt;(file:///C:/Users/Ati/AppData/Local/Temp/anonymous3655197809983747326webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12481)<br />
-                  </div>
-          </div>
-      </td>
-</tr>
-      </table>
 
 
   <table class="resultsTable">
     <tr><th colspan="3" class="header passed">Passed Tests</th></tr>
           <tr>
-        <td colspan="3" class="group">com.atishay.webui.webdriver.tests.LoginTest</td>
+        <td colspan="3" class="group">com.atishay.webui.Group.ChildTest</td>
       </tr>
             
 <tr>
   <td class="method">
-                  successfulLogin
+                  testTwo
       </td>
   <td class="duration">
-    9.442s
+    0.001s
   </td>
   <td class="result">
         
